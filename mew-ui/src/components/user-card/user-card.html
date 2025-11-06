@@ -10,7 +10,7 @@
 }
 
 <ul>
-    @for (let user of users; track user.id) {
+    @for (user of users; track user.id) {
         <li>{{ user.name }} (ID: {{ user.id }})</li>
     } @empty {
         <li>No users available.</li>
