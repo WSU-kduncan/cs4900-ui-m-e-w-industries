@@ -9,6 +9,9 @@ import { Component, Input } from '@angular/core';
 })
 export class UserCard {
 
+  id: number | undefined;
+  name: string | undefined;
+
   @Input() user: UserCard | null = null;
 
   users: Array<{ id: number; name: string }> = [
