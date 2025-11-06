@@ -12,5 +12,5 @@ import { UserCard } from '../user-card/user-card';
 })
 export class MatchedUserList {
 
-  @Input() matchedUsers: MatchedUserList | null = null;
+  @Input() matchedUsers: any | null = null;
 }

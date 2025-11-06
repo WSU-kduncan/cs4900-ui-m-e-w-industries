@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { UserCard } from './components/user-card/user-card';
+import { MatchedUserList } from './components/matched-user-list/matched-user-list';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,5 @@ import { UserCard } from './components/user-card/user-card';
 })
 export class App {
   protected readonly title = signal('mew-ui');
-user: any;
+  user: UserCard = new UserCard();
 }
