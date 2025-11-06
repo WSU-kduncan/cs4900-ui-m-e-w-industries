@@ -1,0 +1,45 @@
+<section class="users-section">
+  <h1>Users</h1>
+
+  @if (users.length > 0) {
+    <div class="grid">
+      @for (u of users; track u.id) {
+        <article class="card">
+          <header class="card-head">
+            <div class="avatar" aria-hidden="true">{{ u.firstName[0] }}</div>
+            <div class="title">
+              <h3 class="name">{{ u.firstName }} {{ u.lastName || '' }}</h3>
+              <p class="muted">#{{ u.id }} • {{ u.gamertag }}</p>
+            </div>
+          </header>
+
+          <dl class="meta">
+            <div>
+              <dt>DOB</dt>
+              <dd>{{ u.dob | date:'yyyy-MM-dd' }}</dd>
+            </div>
+            <div>
+              <dt>Email</dt>
+              <dd><a> {{ u.email }}</a></dd>
+            </div>
+            <div>
+              <dt>Console</dt>
+              <dd>{{ consoleLabel(u.preferredConsole) }}</dd>
+            </div>
+          </dl>
+
+          <p class="about">{{ u.about || 'No bio provided.' }}</p>
+
+          <footer class="actions">
+            <button type="button" class="btn outline">Not Interested</button>
+            <button type="button" class="btn solid">Let’s Game!</button>
+          </footer>
+        </article>
+      } @empty {
+        <div class="empty">No users to show.</div>
+      }
+    </div>
+  } @else {
+    <p class="info">No users found.</p>
+  }
+</section>
