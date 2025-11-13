@@ -1,12 +1,14 @@
 import { Component, Input, Signal, WritableSignal, signal } from '@angular/core';
 import { UserService } from '../../service/UserService';
 import { FormsModule } from '@angular/forms';
+import { UserCardDetail } from '../user-card-detail/user-card-detail';
 
 @Component({
   selector: 'app-user-card',
   standalone: true,
   imports: [
     FormsModule
+    , UserCardDetail
   ],
   templateUrl: './user-card.html',
   styleUrl: './user-card.scss',
