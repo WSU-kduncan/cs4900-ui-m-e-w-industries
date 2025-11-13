@@ -1,9 +1,13 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Signal, WritableSignal, signal } from '@angular/core';
+import { UserService } from '../../service/UserService';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user-card',
   standalone: true,
-  imports: [],
+  imports: [
+    FormsModule
+  ],
   templateUrl: './user-card.html',
   styleUrl: './user-card.scss',
 })
@@ -11,14 +15,19 @@ export class UserCard {
 
   id: number | undefined;
   name: string | undefined;
+  userService: any;
+  isTyping: WritableSignal<boolean> = signal(false);
+  buttonClicked: WritableSignal<boolean> = signal(false);
 
   @Input() user: UserCard | null = null;
 
-  users: Array<{ id: number; name: string }> = [
-    { id: 1, name: 'Alice' },
-    { id: 2, name: 'Bob' },
-    { id: 3, name: 'Charlie' },
-    { id: 4, name: 'Diana' },
-    { id: 5, name: 'Evan' },
-  ];
+  onButtonClick(id : number, name: string): void {
+    this.buttonClicked.set(true);
+    
+    if (id !== undefined && name !== undefined) {
+      this.userService.addUser({ id, name });
+    } else {
+      console.error('ID or Name is undefined');
+    }
+  }
 }
