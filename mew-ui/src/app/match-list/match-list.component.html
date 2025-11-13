@@ -1,0 +1,25 @@
+<div class="matches-container">
+  <h1 class="matches-title">MATCHES</h1>
+  
+  <!-- @if block to display message when matches exist -->
+  @if (matches.length > 0) {
+    <p class="matches-info">You have {{ matches.length }} match(es)!</p>
+    
+    <!-- @for loop with mandatory track expression -->
+    <ul class="matches-list">
+      @for (match of matches; track match.id) {
+        <li class="match-item">
+          <div class="match-content">
+            <span class="match-name">{{ match.name }}</span>
+            <span class="match-gamertag">@{{ match.gamertag }}</span>
+          </div>
+          <span class="match-arrow">→</span>
+        </li>
+      }
+    </ul>
+  }
+  
+  @if (matches.length === 0) {
+    <p class="no-matches">No matches yet. Keep swiping!</p>
+  }
+</div>
