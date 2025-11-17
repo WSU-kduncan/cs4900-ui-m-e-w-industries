@@ -1,18 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { UserTable } from './user-table';
+import { UserService } from '../user-service';
 
 describe('UserTable', () => {
   let component: UserTable;
   let fixture: ComponentFixture<UserTable>;
+  let userService: UserService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UserTable], 
+      imports: [UserTable],
     }).compileComponents();
 
     fixture = TestBed.createComponent(UserTable);
     component = fixture.componentInstance;
+    userService = TestBed.inject(UserService);
     fixture.detectChanges();
   });
 
@@ -20,18 +23,19 @@ describe('UserTable', () => {
     expect(component).toBeTruthy();
   });
 
-  it('renders a row per user when users exist', () => {
+  it('renders a user-detail card for each user', () => {
     
-    const rows = fixture.debugElement.queryAll(By.css('tbody tr'));
-    expect(rows.length).toBe(component.users.length);
+    const count = userService.users().length;
+
+    const cards = fixture.debugElement.queryAll(By.css('user-detail'));
+    expect(cards.length).toBe(count);
   });
 
   it('shows empty state when array is empty', () => {
-    component.users = [];
+    userService.setInitialUsers([]);  
     fixture.detectChanges();
 
-    
-    const emptyCell = fixture.debugElement.query(By.css('.empty'));
-    expect(emptyCell).toBeTruthy();
+    const emptyEl = fixture.debugElement.query(By.css('.empty'));
+    expect(emptyEl).toBeTruthy();
   });
 });

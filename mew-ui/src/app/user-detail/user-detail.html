@@ -1,0 +1,42 @@
+<article class="card">
+  <header class="card-head">
+    <div class="avatar" aria-hidden="true">
+      {{ item().firstName[0] }}
+    </div>
+
+    <div class="title">
+      <h3 class="name">
+        {{ item().firstName }} {{ item().lastName || '' }}
+      </h3>
+      <p class="muted">
+        #{{ item().id }} • {{ item().gamertag }}
+      </p>
+    </div>
+  </header>
+
+  <dl class="meta">
+    <div>
+      <dt>DOB</dt>
+      <dd>{{ item().dob | date:'yyyy-MM-dd' }}</dd>
+    </div>
+
+    <div>
+      <dt>Email</dt>
+      <dd><a>{{ item().email }}</a></dd>
+    </div>
+
+    <div>
+      <dt>Console</dt>
+      <dd>{{ consoleLabel(item().preferredConsole) }}</dd>
+    </div>
+  </dl>
+
+  <p class="about">
+    {{ item().about || 'No bio provided.' }}
+  </p>
+
+  <footer class="actions">
+    <button type="button" class="btn outline">Not Interested</button>
+    <button type="button" class="btn solid">Let’s Game!</button>
+  </footer>
+</article>
