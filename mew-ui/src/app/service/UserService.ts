@@ -15,7 +15,7 @@ export interface User {
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  users: Array<{ id: number; name: string }> = [
+  users: Array< User > = [
     { id: 1, name: 'Alice' },
     { id: 2, name: 'Bob' },
     { id: 3, name: 'Charlie' },
