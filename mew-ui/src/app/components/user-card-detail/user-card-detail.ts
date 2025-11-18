@@ -1,6 +1,6 @@
 import { Component, inject, Input } from '@angular/core';
 import { UserCard } from '../user-card/user-card';
-import { UserService } from '../../service/UserService';
+import { User, UserService } from '../../service/UserService';
 
 @Component({
   selector: 'app-user-card-detail',
@@ -10,5 +10,5 @@ import { UserService } from '../../service/UserService';
 })
 export class UserCardDetail {
 
-  @Input() user: UserCard | null = null;
+  @Input() user: User | null = null;
 }

@@ -1,5 +1,5 @@
 import { Component, Input, Signal, WritableSignal, inject, signal } from '@angular/core';
-import { UserService } from '../../service/UserService';
+import { User, UserService } from '../../service/UserService';
 import { FormsModule } from '@angular/forms';
 import { UserCardDetail } from '../user-card-detail/user-card-detail';
 import { HttpClient } from '@angular/common/http';
@@ -26,7 +26,7 @@ export class UserCard {
   public userService: UserService = inject(UserService);
   public users = this.userService.UserCards;
 
-  @Input() user: UserCard | null = null;
+  @Input() user: User | null = null;
 
   onButtonClick(id : number, name: string): void {
     this.buttonClicked.set(true);
