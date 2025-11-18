@@ -9,7 +9,7 @@
 }
 
 <ul>
-    @for (user of userCardList.getUserCards(); track user.id) {
+    @for (user of userService.getUsers(); track user.id) {
         <li>
             <app-user-card-detail [user]="user"></app-user-card-detail>
         </li>

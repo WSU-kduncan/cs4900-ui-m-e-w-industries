@@ -1,6 +1,7 @@
-import { Injectable, Input } from "@angular/core";
+import { Injectable, Input, signal, WritableSignal } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { toSignal } from "@angular/core/rxjs-interop";
 
 export interface User {
   id: number;
@@ -14,13 +15,15 @@ export interface User {
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  @Input() users: Array<{ id: number; name: string }> = [
+  users: Array<{ id: number; name: string }> = [
     { id: 1, name: 'Alice' },
     { id: 2, name: 'Bob' },
     { id: 3, name: 'Charlie' },
     { id: 4, name: 'Diana' },
     { id: 5, name: 'Evan' },
   ];
+
+  UserCards : WritableSignal<User[]> = signal<User[]>(this.users);
 
   get<User>(): Observable<User[]> {
     return this.http.get<User[]>('https://api.example.com/users');

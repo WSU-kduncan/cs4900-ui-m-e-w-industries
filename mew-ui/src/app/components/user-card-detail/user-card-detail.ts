@@ -10,7 +10,5 @@ import { UserService } from '../../service/UserService';
 })
 export class UserCardDetail {
 
-  private readonly userService = inject(UserService);
-
   @Input() user: UserCard | null = null;
 }

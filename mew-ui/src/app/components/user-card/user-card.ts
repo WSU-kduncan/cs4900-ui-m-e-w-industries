@@ -1,8 +1,8 @@
-import { Component, Input, Signal, WritableSignal, signal } from '@angular/core';
+import { Component, Input, Signal, WritableSignal, inject, signal } from '@angular/core';
 import { UserService } from '../../service/UserService';
 import { FormsModule } from '@angular/forms';
 import { UserCardDetail } from '../user-card-detail/user-card-detail';
-import { UserCardList } from '../user-card-list/user-card-list';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-card',
@@ -14,14 +14,17 @@ import { UserCardList } from '../user-card-list/user-card-list';
   templateUrl: './user-card.html',
   styleUrl: './user-card.scss',
 })
+
 export class UserCard {
 
   id: number | undefined;
   name: string | undefined;
-  userService: any;
-  userCardList: any;
+
   isTyping: WritableSignal<boolean> = signal(false);
   buttonClicked: WritableSignal<boolean> = signal(false);
+
+  public userService: UserService = inject(UserService);
+  public users = this.userService.UserCards;
 
   @Input() user: UserCard | null = null;
 
