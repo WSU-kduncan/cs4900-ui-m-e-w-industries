@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { MatchListComponent } from './match-list/match-list.component';  // ADD THIS LINE
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, MatchListComponent],  // ADD MatchListComponent HERE
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

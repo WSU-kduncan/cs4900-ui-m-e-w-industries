@@ -1,0 +1,14 @@
+<div class="match-detail-card">
+  <div class="match-header">
+    <h3 class="match-name">{{ match().name }}</h3>
+    <span class="match-gamertag">@{{ match().gamertag }}</span>
+  </div>
+  
+  @if (match().aboutUser) {
+    <div class="match-about">
+      <p class="about-text">{{ match().aboutUser }}</p>
+    </div>
+  }
+  
+  <div class="match-arrow">→</div>
+</div>

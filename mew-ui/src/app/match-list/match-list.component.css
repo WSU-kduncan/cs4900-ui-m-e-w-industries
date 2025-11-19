@@ -16,6 +16,72 @@
   letter-spacing: 2px;
 }
 
+.add-match-form {
+  background-color: #e8dff5;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  border: 2px solid #c4b5d8;
+}
+
+.form-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 0.4rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 2px solid #c4b5d8;
+  border-radius: 6px;
+  background-color: white;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #9b88ab;
+}
+
+.add-button {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  background-color: #9b88ab;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.add-button:hover:not(:disabled) {
+  background-color: #8a76a0;
+}
+
+.add-button:disabled {
+  background-color: #d0c4dd;
+  cursor: not-allowed;
+}
+
 .matches-info {
   text-align: center;
   font-size: 1.1rem;
@@ -24,52 +90,9 @@
 }
 
 .matches-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.match-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-  background-color: #b8a6c9;
-  border: 2px solid #9b88ab;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.match-item:hover {
-  background-color: #a995ba;
-  transform: translateX(5px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.match-content {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-}
-
-.match-name {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #2c2c2c;
-}
-
-.match-gamertag {
-  font-size: 0.95rem;
-  color: #4a4a4a;
-  font-style: italic;
-}
-
-.match-arrow {
-  font-size: 2rem;
-  color: #4a4a4a;
-  font-weight: bold;
+  gap: 0;
 }
 
 .no-matches {
@@ -79,7 +102,6 @@
   padding: 2rem;
   font-style: italic;
 }
-
 
 @media (max-width: 600px) {
   .matches-container {
