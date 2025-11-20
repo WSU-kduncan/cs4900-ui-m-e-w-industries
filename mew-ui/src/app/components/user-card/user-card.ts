@@ -17,22 +17,27 @@ import { HttpClient } from '@angular/common/http';
 
 export class UserCard {
 
+  public userService: UserService = inject(UserService);
+  public users = this.userService.UserCards;
+
   id: number | undefined;
-  name: string | undefined;
+  firstName: string | undefined;
+  lastName: string | undefined;
+  dob: string | undefined;
+  email: string | undefined;
+  gamertag: string | undefined;
+  preferredConsole: string | undefined;
 
   isTyping: WritableSignal<boolean> = signal(false);
   buttonClicked: WritableSignal<boolean> = signal(false);
 
-  public userService: UserService = inject(UserService);
-  public users = this.userService.UserCards;
-
   @Input() user: User | null = null;
 
-  onButtonClick(id : number, name: string): void {
+  onButtonClick(id : number, firstName: string, lastName: string, dob: string, email: string, gamertag: string, preferredConsole: string): void {
     this.buttonClicked.set(true);
     
-    if (id !== undefined && name !== undefined) {
-      this.userService.addUser({ id, name });
+    if (id !== undefined && firstName !== undefined) {
+      this.userService.addUser({ id, firstName, lastName: this.lastName || '', dob: this.dob || '', email: this.email || '', gamertag: this.gamertag || '', preferredConsole: this.preferredConsole || '' });
     } else {
       console.error('ID or Name is undefined');
     }
