@@ -1,6 +1,6 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { UserService } from './service/UserService';
+import { UserService } from './service/UserService.service';
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 
