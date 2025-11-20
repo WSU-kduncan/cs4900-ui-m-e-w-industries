@@ -28,8 +28,9 @@ export class UserCard {
   gamertag: string | undefined;
   preferredConsole: string | undefined;
 
-  isTyping: WritableSignal<boolean> = signal(false);
   buttonClicked: WritableSignal<boolean> = signal(false);
+  // isTyping: WritableSignal<boolean> = signal(false);
+ 
 
   @Input() user: User | null = null;
 
@@ -39,7 +40,7 @@ export class UserCard {
     if (id !== undefined && firstName !== undefined) {
       this.userService.addUser({ id, firstName, lastName: this.lastName || '', dob: this.dob || '', email: this.email || '', gamertag: this.gamertag || '', preferredConsole: this.preferredConsole || '' });
     } else {
-      console.error('ID or Name is undefined');
+      console.error('All fields are required to add a user.');
     }
   }
 }

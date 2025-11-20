@@ -31,11 +31,11 @@
 <input #gamertagInput type="text" placeholder="Gamertag" [(ngModel)]="gamertag">
 <input #preferredConsoleInput type="text" placeholder="Preferred Console" [(ngModel)]="preferredConsole">
 
-@if (isTyping()) {
+<!-- @if (isTyping()) {
     <p>Typing...</p>
 } @else {
     <p>Not typing</p>
-}
+} -->
 
 <button (click)="onButtonClick(id || 0, firstName || '', lastName || '', dob || '', email || '', gamertag || '', preferredConsole || '')">Add User</button>
 
