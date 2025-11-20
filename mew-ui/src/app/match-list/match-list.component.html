@@ -1,5 +1,37 @@
 <div class="matches-container">
   <h1 class="matches-title">MATCHES</h1>
+
+  <!-- Display API Users Section -->
+  <div class="api-users-section">
+    <h2 class="section-title">Users from API</h2>
+    @if (users().length > 0) {
+      <p class="users-info">Fetched {{ users().length }} users from JSONPlaceholder API</p>
+      
+      <div class="users-list">
+        @for (user of users(); track user.id) {
+          <div class="user-card">
+            <div class="user-header">
+              <h3 class="user-name">{{ user.name }}</h3>
+              <span class="user-username">@{{ user.username }}</span>
+            </div>
+            <div class="user-details">
+              <p class="user-email">📧 {{ user.email }}</p>
+              @if (user.phone) {
+                <p class="user-phone">📱 {{ user.phone }}</p>
+              }
+              @if (user.website) {
+                <p class="user-website">🌐 {{ user.website }}</p>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    } @else {
+      <p class="loading">Loading users from API...</p>
+    }
+  </div>
+
+  <hr class="section-divider" />
   
   <!-- Add New Match Form -->
   <div class="add-match-form">

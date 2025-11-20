@@ -16,6 +16,96 @@
   letter-spacing: 2px;
 }
 
+/* API Users Section */
+.api-users-section {
+  background-color: #e3f2fd;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  border: 2px solid #90caf9;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  color: #1565c0;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.users-info {
+  text-align: center;
+  font-size: 1rem;
+  color: #1976d2;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.users-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.user-card {
+  background-color: white;
+  padding: 1.25rem;
+  border-radius: 8px;
+  border: 2px solid #64b5f6;
+  transition: all 0.3s ease;
+}
+
+.user-card:hover {
+  border-color: #1976d2;
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.2);
+  transform: translateY(-2px);
+}
+
+.user-header {
+  margin-bottom: 0.75rem;
+}
+
+.user-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1565c0;
+  margin: 0 0 0.25rem 0;
+}
+
+.user-username {
+  font-size: 0.95rem;
+  color: #1976d2;
+  font-style: italic;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.user-email,
+.user-phone,
+.user-website {
+  font-size: 0.9rem;
+  color: #424242;
+  margin: 0;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #1976d2;
+  padding: 2rem;
+  font-style: italic;
+}
+
+.section-divider {
+  border: none;
+  border-top: 2px solid #ccc;
+  margin: 2rem 0;
+}
+
+/* Form Section */
 .add-match-form {
   background-color: #e8dff5;
   padding: 1.5rem;

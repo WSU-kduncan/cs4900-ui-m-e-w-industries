@@ -1,4 +1,18 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, inject} from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+
+
+// TypeScript interface defining the shape of API data
+export interface User {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  phone?: string;
+  website?: string;
+}
 
 export interface Match {
   id: number;
@@ -11,6 +25,9 @@ export interface Match {
   providedIn: 'root'
 })
 export class MatchService {
+  // Inject HttpClient
+  private http = inject(HttpClient);
+
   // Writable signal to hold the array of matches
   private matchesSignal = signal<Match[]>([
     { 
@@ -41,6 +58,12 @@ export class MatchService {
 
   // Expose the signal as readonly
   readonly matches = this.matchesSignal.asReadonly();
+
+  // Method that uses HttpClient to fetch data from API
+  // Returns an Observable of User array
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>('https://jsonplaceholder.typicode.com/users');
+  }
 
   // Method to add a new match
   addMatch(name: string, gamertag: string, aboutUser: string = ''): void {

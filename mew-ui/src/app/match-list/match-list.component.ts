@@ -1,6 +1,7 @@
 import { Component, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatchService } from '../services/match.service';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { MatchService, User } from '../services/match.service';
 import { MatchDetailComponent } from '../match-detail/match-detail.component';
 
 
@@ -18,6 +19,8 @@ export class MatchListComponent {
 
   // Expose the matches signal from the service
   matches = this.matchService.matches;
+
+  users = toSignal(this.matchService.getUsers(), { initialValue: [] as User[] });
 
   // Signals for form inputs
   newMatchName = signal('');
