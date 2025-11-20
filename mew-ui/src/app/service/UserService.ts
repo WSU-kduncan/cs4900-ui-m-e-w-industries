@@ -30,8 +30,8 @@ export class UserService {
 
   UserCards : WritableSignal<User[]> = signal<User[]>(this.users);
 
-  get<User>(): Observable<User[]> {
-    return this.http.get<User[]>('https://api.example.com/users');
+  getUsersArray<User>(): Observable<User[]> {
+    return this.http.get<User[]>('http://localhost:8080/users');
   }
 
   addUser(user: { id: number; firstName: string; lastName: string; dob: string; email: string; gamertag: string; preferredConsole: string }) {

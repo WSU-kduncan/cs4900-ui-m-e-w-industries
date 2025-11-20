@@ -1,18 +1,4 @@
 
-<!-- @if (user) {
-    <div class="user-card">
-        <h3>{{ user.id }}</h3>
-        <h4>{{ user.firstName }}</h4>
-        <h4>{{ user.lastName }}</h4>
-        <h4>{{ user.dob }}</h4>
-        <h4>{{ user.email }}</h4>
-        <h4>{{ user.gamertag }}</h4>
-        <h4>{{ user.preferredConsole }}</h4>
-    </div>
-} @else {
-    <p>No user data available.</p>
-} -->
-
 <ul>
     @for (user of users(); track user.id) {
         <li>
@@ -31,12 +17,6 @@
 <input #gamertagInput type="text" placeholder="Gamertag" [(ngModel)]="gamertag">
 <input #preferredConsoleInput type="text" placeholder="Preferred Console" [(ngModel)]="preferredConsole">
 
-<!-- @if (isTyping()) {
-    <p>Typing...</p>
-} @else {
-    <p>Not typing</p>
-} -->
-
 <button (click)="onButtonClick(id || 0, firstName || '', lastName || '', dob || '', email || '', gamertag || '', preferredConsole || '')">Add User</button>
 
 @if (buttonClicked()) {
@@ -44,3 +24,23 @@
 } @else {
     <p>Add User</p>
 }
+
+<!-- @if (isTyping()) {
+    <p>Typing...</p>
+} @else {
+    <p>Not typing</p>
+} -->
+    
+<!-- @if (user) {
+    <div class="user-card">
+        <h3>{{ user.id }}</h3>
+        <h4>{{ user.firstName }}</h4>
+        <h4>{{ user.lastName }}</h4>
+        <h4>{{ user.dob }}</h4>
+        <h4>{{ user.email }}</h4>
+        <h4>{{ user.gamertag }}</h4>
+        <h4>{{ user.preferredConsole }}</h4>
+    </div>
+} @else {
+    <p>No user data available.</p>
+} -->
