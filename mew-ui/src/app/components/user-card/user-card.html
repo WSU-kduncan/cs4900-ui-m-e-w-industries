@@ -1,6 +1,6 @@
 
 <ul>
-    @for (user of users(); track user.id) {
+    @for (user of users(); track trackUserById($index, user)) {
         <li>
             <app-user-card-detail [user]="user"></app-user-card-detail>
         </li>

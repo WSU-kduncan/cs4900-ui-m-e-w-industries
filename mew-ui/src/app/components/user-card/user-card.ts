@@ -2,7 +2,6 @@ import { Component, Input, Signal, WritableSignal, inject, signal } from '@angul
 import { User, UserService } from '../../service/UserService.service';
 import { FormsModule } from '@angular/forms';
 import { UserCardDetail } from '../user-card-detail/user-card-detail';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-card',
@@ -26,7 +25,7 @@ export class UserCard {
   dob: string | undefined;
   email: string | undefined;
   gamertag: string | undefined;
-  preferredConsole: string | undefined;
+  preferredConsole: number | undefined;
   aboutUser: string | undefined;
   gameIds: number[] | undefined;
 
@@ -35,6 +34,10 @@ export class UserCard {
  
 
   @Input() user: User | null = null;
+
+  public trackUserById(index: number, user: User): number {
+    return user.id;
+  }
 
   // onButtonClick(id : number, firstName: string, lastName: string, dob: string, email: string, gamertag: string, preferredConsole: string): void {
   //   this.buttonClicked.set(true);

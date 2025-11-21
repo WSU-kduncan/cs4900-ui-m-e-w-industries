@@ -11,7 +11,7 @@ export interface User {
   dob: string;
   email: string;
   gamertag: string;
-  preferredConsole?: string;
+  preferredConsole?: number;
   aboutUser?: string;
   gameIds?: number[];
 }
@@ -40,6 +40,11 @@ export class UserService {
   getUsersFromBackend(): void {
     this.ApiService.get().subscribe({
       next: (data) => {
+        // console.log('raw response:', data); 
+        // console.log('isArray:', Array.isArray(data)); 
+        // console.log('typeof:', typeof data); 
+        // console.log('Object.prototype.toString:', Object.prototype.toString.call(data)); 
+        // console.log('keys:', Object.keys(data));
         console.log('User data retrieved from backend:', data);
         this.UserCards.set(data);
       },
