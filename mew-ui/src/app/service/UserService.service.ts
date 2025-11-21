@@ -11,7 +11,7 @@ export interface User {
   dob: string;
   email: string;
   gamertag: string;
-  preferredConsole: string;
+  preferredConsole?: string;
   aboutUser?: string;
   gameIds?: number[];
 }
