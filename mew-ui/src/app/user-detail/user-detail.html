@@ -6,10 +6,10 @@
 
     <div class="title">
       <h3 class="name">
-        {{ item().firstName }} {{ item().lastName || '' }}
+        {{ item().firstName }} {{ item().lastName }}
       </h3>
       <p class="muted">
-        #{{ item().id }} • {{ item().gamertag }}
+        #{{ item().userId }} • {{ item().gamertag }}
       </p>
     </div>
   </header>
@@ -22,21 +22,16 @@
 
     <div>
       <dt>Email</dt>
-      <dd><a>{{ item().email }}</a></dd>
+      <dd>{{ item().email }}</dd>
     </div>
 
     <div>
       <dt>Console</dt>
-      <dd>{{ consoleLabel(item().preferredConsole) }}</dd>
+      <dd>{{ consoleLabel(item().consoleId) }}</dd>
     </div>
   </dl>
 
   <p class="about">
-    {{ item().about || 'No bio provided.' }}
+    {{ item().aboutUser || 'No bio provided.' }}
   </p>
-
-  <footer class="actions">
-    <button type="button" class="btn outline">Not Interested</button>
-    <button type="button" class="btn solid">Let’s Game!</button>
-  </footer>
 </article>

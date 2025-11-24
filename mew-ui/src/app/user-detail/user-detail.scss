@@ -32,7 +32,6 @@
   margin: 0;
   font-size: 1.05rem;
 }
-
 .title .muted {
   margin: 0.15rem 0 0;
   color: #6b7280;
@@ -48,9 +47,7 @@
 .meta dt {
   font-size: 0.75rem;
   color: #6b7280;
-  letter-spacing: .02em;
 }
-
 .meta dd {
   margin: 0.15rem 0 0;
   font-weight: 500;
@@ -60,40 +57,4 @@
   margin: 0.25rem 0 0;
   color: #374151;
   line-height: 1.35;
-  min-height: 2.2em;
-}
-
-.actions {
-  margin-top: 0.25rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: .75rem;
-}
-
-.btn {
-  padding: .55rem .75rem;
-  border-radius: 8px;
-  font-size: .95rem;
-  cursor: pointer;
-  border: 2px solid transparent;
-}
-
-.btn.outline {
-  background:#bfe3a9;
-  color: #223322;
-}
-
-.btn.solid {
-  background: #bfe3a9;
-  color: #223322;
-}
-
-@media (max-width: 560px) {
-  .meta {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .actions {
-    grid-template-columns: 1fr;
-  }
 }

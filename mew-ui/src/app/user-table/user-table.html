@@ -1,74 +1,20 @@
 <section class="users-section">
-  <h1>Add New User</h1>
 
-  <div class="add-user-form">
+  <h1>USERS</h1>
+   
 
-    <input
-      type="text"
-      placeholder="First Name"
-      (input)="firstName.set($any($event.target).value)"
-      [value]="firstName()"
-    />
-
-    <input
-      type="text"
-      placeholder="Last Name"
-      (input)="lastName.set($any($event.target).value)"
-      [value]="lastName()"
-    />
-
-    <input
-      type="date"
-      (input)="dob.set($any($event.target).value)"
-      [value]="dob()"
-    />
-
-    <input
-      type="email"
-      placeholder="Email"
-      (input)="email.set($any($event.target).value)"
-      [value]="email()"
-    />
-
-    <input
-      type="text"
-      placeholder="Gamertag"
-      (input)="gamertag.set($any($event.target).value)"
-      [value]="gamertag()"
-    />
-
-    <select
-      (change)="preferredConsole.set($any($event.target).value)"
-      [value]="preferredConsole()"
-    >
-      <option value="1">PlayStation</option>
-      <option value="2">Xbox</option>
-      <option value="3">Nintendo Switch</option>
-      <option value="4">PC</option>
-      <option value="5">Mobile</option>
-    </select>
-
-    <textarea
-      placeholder="About"
-      (input)="about.set($any($event.target).value)"
-      [value]="about()"
-    ></textarea>
-
-    <button class="btn solid" (click)="addUser()">
-      Add User
-    </button>
-
-  </div>
-
-  <h1>Users</h1>
-
-  @if (userService.users().length > 0) {
+  @if (remoteUsers().length > 0) {
     <div class="grid">
-      @for (u of userService.users(); track u.id) {
-        <user-detail [item]="u"></user-detail>
+      @for (ru of remoteUsers(); track ru.userId) {
+
+        <user-detail [item]="ru"></user-detail>
+
       } @empty {
-        <div class="empty">No users to show.</div>
+        <div class="empty">No remote users found.</div>
       }
     </div>
+  } @else {
+    <p class="info">Loading remote users...</p>
   }
+
 </section>

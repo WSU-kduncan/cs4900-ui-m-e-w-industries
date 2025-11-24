@@ -1,14 +1,6 @@
 import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { User } from '../user-service';
-
-const CONSOLE_LABELS: Record<number, string> = {
-  1: 'Play Station',
-  2: 'Xbox',
-  3: 'Nintendo Switch',
-  4: 'PC',
-  5: 'Mobile',
-};
+import { ApiUser } from '../user-service';
 
 @Component({
   selector: 'user-detail',
@@ -18,10 +10,17 @@ const CONSOLE_LABELS: Record<number, string> = {
   styleUrls: ['./user-detail.scss'],
 })
 export class UserDetail {
-  // Required signal input from parent
-  item = input.required<User>();
 
-  consoleLabel(code: number): string {
-    return CONSOLE_LABELS[code] ?? `Unknown (${code})`;
+  // Accepts API user now (NOT local User model)
+  item = input.required<ApiUser>();
+
+  consoleLabel(id: number): string {
+    return {
+      1: 'PlayStation',
+      2: 'Xbox',
+      3: 'Nintendo Switch',
+      4: 'PC',
+      5: 'Mobile'
+    }[id] ?? `Unknown (${id})`;
   }
 }
