@@ -2,7 +2,7 @@ import { Injectable, Input, signal, WritableSignal } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { map, Observable } from "rxjs";
 import { toSignal } from "@angular/core/rxjs-interop";
-import { AddUserRequest, User } from "./UserService.service";
+import { AddUserRequest, UpdateUserRequest, User } from "./UserService.service";
 
 export interface UserApiResponse {
   users: User[];
@@ -25,8 +25,8 @@ export class ApiService {
     );
   }
 
-  post(request: AddUserRequest): Observable<any> {
-    return this.http.post<any>('http://localhost:8080/GamerMatch/users', request)
+  post(request: AddUserRequest): Observable<User> {
+    return this.http.post<User>('http://localhost:8080/GamerMatch/users', request)
     .pipe(
       map(response => {
         console.log('User added successfully:', response);
@@ -35,4 +35,13 @@ export class ApiService {
     );
   }
 
+  put(userId: number, request: UpdateUserRequest): Observable<User> {
+    return this.http.put<User>(`http://localhost:8080/GamerMatch/users/id/${userId}`, request)
+    .pipe(
+      map(response => {
+        console.log('User updated successfully:', response);
+        return response;
+      })
+    );
+  }
 }

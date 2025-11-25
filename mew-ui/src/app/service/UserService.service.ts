@@ -80,7 +80,17 @@ export class UserService {
     );
   }
 
-  // getUsers() {
-  //   return this.users;
-  // }
+  updateUser(id: number, request: UpdateUserRequest): Observable<User> {
+  
+    return this.ApiService.put(id, request).pipe(
+      map(response => {
+        console.log('User updated successfully:', response);
+        return response;
+      }),
+      catchError(error => {
+        console.error('Error updating user:', error);
+        throw error;
+      })
+    );
+  }
 }
