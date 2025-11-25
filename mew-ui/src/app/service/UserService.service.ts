@@ -1,6 +1,6 @@
 import { inject, Injectable, Input, signal, WritableSignal } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { map, Observable } from "rxjs";
+import { catchError, map, Observable } from "rxjs";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { ApiService } from "./ApiService.service";
 
@@ -12,6 +12,17 @@ export interface User {
   email: string;
   gamertag: string;
   preferredConsole?: number;
+  aboutUser?: string;
+  gameIds?: number[];
+}
+
+export interface AddUserRequest {
+  firstName: string;
+  lastName: string;
+  dob: string;
+  email: string;
+  gamertag: string;
+  preferredConsole: string;
   aboutUser?: string;
   gameIds?: number[];
 }
@@ -54,9 +65,19 @@ export class UserService {
     });
   }
 
-  // addUser(user: { id: number; firstName: string; lastName: string; dob: string; email: string; gamertag: string; preferredConsole: string }) {
-  //   this.users.push(user);
-  // }
+  addUser(request: AddUserRequest): Observable<User> {
+    
+    return this.ApiService.post(request).pipe(
+      map(response => {
+        console.log('User added successfully:', response);
+        return response;
+      }),
+      catchError(error => {
+        console.error('Error adding user:', error);
+        throw error;
+      })
+    );
+  }
 
   // getUsers() {
   //   return this.users;

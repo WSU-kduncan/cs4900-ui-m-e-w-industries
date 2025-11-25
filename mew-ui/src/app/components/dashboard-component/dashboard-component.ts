@@ -1,12 +1,14 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { UserCard } from '../user-card/user-card';
 import { UserService } from '../../service/UserService.service';
+import { UserFormComponent } from "../user-form-component/user-form-component";
 
 @Component({
   selector: 'app-dashboard-component',
   imports: [
-    UserCard
-  ],
+    UserCard,
+    UserFormComponent
+],
   templateUrl: './dashboard-component.html',
   styleUrl: './dashboard-component.scss',
 })
@@ -28,4 +30,8 @@ export class DashboardComponent implements OnInit {
 
     this.userService.getUsersFromBackend();
   };
+
+  refreshDashboard(): void {
+    this.loadDashboardData();
+  }
 }
