@@ -1,3 +1,11 @@
 <app-user-card></app-user-card>
 
 <app-user-form-component (userAdded)="refreshDashboard()"></app-user-form-component>
+
+<button
+    class="btn btn-info"
+    type="button"
+    (click)="refreshDashboard()"
+    aria-label="Refresh user list">
+    Refresh
+</button>

@@ -25,7 +25,7 @@ export class UserCard {
   dob: string | undefined;
   email: string | undefined;
   gamertag: string | undefined;
-  preferredConsole: number | undefined;
+  consoleId: number | undefined;
   aboutUser: string | undefined;
   gameIds: number[] | undefined;
 

@@ -4,14 +4,16 @@ import { UserService, AddUserRequest } from '../../service/UserService.service';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-form-component',
+  standalone: true,
   imports: [
     ReactiveFormsModule
   ],
   templateUrl: './user-form-component.html',
-  styleUrl: './user-form-component.scss',
+  styleUrls: ['./user-form-component.scss'],
 })
 export class UserFormComponent implements OnInit {
 
@@ -24,12 +26,12 @@ export class UserFormComponent implements OnInit {
   errorMessaege = signal<string>('');
   successMessage = signal<string>('');
 
-  ngOnInit(): void {
-    // Initialization logic
-  }
-
   constructor() {
     this.userForm = this.createForm();
+  }
+
+  ngOnInit(): void {
+    // Initialization logic
   }
 
   private createForm(): FormGroup {
@@ -39,24 +41,24 @@ export class UserFormComponent implements OnInit {
       dob: [''],
       email: [''],
       gamertag: [''],
-      preferredConsole: [''],
+      consoleId: [''],
       aboutUser: [''],
       gameIds: ['']
     });
   }
 
   onSubmit(): void {
+    console.log('submit called');
+    console.log('form valid:', this.userForm.valid);
+    console.log('form value:', this.userForm.value);
+    console.log('form rawValue:', this.userForm.getRawValue());
+
     this.isSubmitting.set(true);
     this.errorMessaege.set('');
     this.successMessage.set('');
 
-    const formValue = this.userForm.value;
+    const formValue = this.userForm.getRawValue();
     this.addUser(formValue);
-
-    this.successMessage.set('User added successfully!');
-    this.isSubmitting.set(false);
-    this.userForm.reset();
-    this.router.navigate(['/dashboard']);
   }
 
   private addUser(formValue: any): void {
@@ -67,22 +69,34 @@ export class UserFormComponent implements OnInit {
       dob: formValue.dob,
       email: formValue.email,
       gamertag: formValue.gamertag,
-      preferredConsole: formValue.preferredConsole,
+      consoleId: formValue.consoleId,
       aboutUser: formValue.aboutUser,
-      gameIds: formValue.gameIds ? formValue.gameIds.split(',').map((id: string) => parseInt(id.trim(), 10)) : []
+      gameIds: formValue.gameIds ? formValue.gameIds.split(',').map((id: string) => parseInt(id.trim(), 10)).filter((n: number) => !isNaN(n)) : []
     }
 
-    this.userService.addUser(request).pipe(
-    ).subscribe({
+    console.log('sending request payload:', request);
+
+    this.userService.addUser(request).subscribe({
       next: () => {
+        console.log('create success');
         this.successMessage.set('User added successfully!');
         this.isSubmitting.set(false);
+        this.userForm.reset();
+
+        this.router.navigateByUrl('/').then(success => {
+          if (!success) {
+            window.location.href = '/';
+          }
+        }).catch(() => {
+          window.location.href = '/';
+        });
       },
-      error: (error: { message: string; }) => {
-        this.errorMessaege.set('Failed to add user: ' + error.message);
+      error: (err: HttpErrorResponse | any) => {
+        console.error('create failed', err);
+        const msg = err?.error?.message ?? err?.message ?? 'Unknown error';
+        this.errorMessaege.set('Failed to add user: ' + msg);
+        this.isSubmitting.set(false);
       }
     });
   }
-
-
 }

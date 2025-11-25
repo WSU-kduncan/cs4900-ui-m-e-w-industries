@@ -29,9 +29,9 @@ export class ApiService {
     return this.http.post<any>('http://localhost:8080/GamerMatch/users', request)
     .pipe(
       map(response => {
+        console.log('User added successfully:', response);
         return response;
-      }
-      )
+      })
     );
   }
 
