@@ -73,7 +73,6 @@ export class UserFormComponent implements OnInit {
     }
 
     this.userService.addUser(request).pipe(
-      takeUntilDestroyed()
     ).subscribe({
       next: () => {
         this.successMessage.set('User added successfully!');
