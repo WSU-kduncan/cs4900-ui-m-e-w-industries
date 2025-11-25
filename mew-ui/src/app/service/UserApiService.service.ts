@@ -12,7 +12,7 @@ export interface UserApiResponse {
   providedIn: 'root'
 })
 
-export class ApiService {
+export class UserApiService {
   constructor(private http: HttpClient) {}
 
   get(): Observable<User[]> {

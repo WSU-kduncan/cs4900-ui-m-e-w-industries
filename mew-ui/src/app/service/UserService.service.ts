@@ -2,7 +2,7 @@ import { inject, Injectable, Input, signal, WritableSignal } from "@angular/core
 import { HttpClient } from "@angular/common/http";
 import { catchError, map, Observable } from "rxjs";
 import { toSignal } from "@angular/core/rxjs-interop";
-import { ApiService } from "./ApiService.service";
+import { UserApiService } from "./UserApiService.service";
 
 export interface User {
   id: number;
@@ -44,13 +44,13 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   UserCards : WritableSignal<User[]> = signal<User[]>([]);
-  private ApiService: ApiService = inject(ApiService);
+  private UserApiService: UserApiService = inject(UserApiService);
 
   private _userFromBackend = signal<User | null>(null);
   public readonly userFromBackend = this._userFromBackend.asReadonly();
 
   getUsersFromBackend(): void {
-    this.ApiService.get().subscribe({
+    this.UserApiService.get().subscribe({
       next: (data) => {
         // console.log('raw response:', data); 
         // console.log('isArray:', Array.isArray(data)); 
@@ -68,7 +68,7 @@ export class UserService {
 
   addUser(request: AddUserRequest): Observable<User> {
     
-    return this.ApiService.post(request).pipe(
+    return this.UserApiService.post(request).pipe(
       map(response => {
         console.log('User added successfully:', response);
         return response;
@@ -82,7 +82,7 @@ export class UserService {
 
   updateUser(id: number, request: UpdateUserRequest): Observable<User> {
   
-    return this.ApiService.put(id, request).pipe(
+    return this.UserApiService.put(id, request).pipe(
       map(response => {
         console.log('User updated successfully:', response);
         return response;
@@ -95,7 +95,7 @@ export class UserService {
   }
 
   deleteUser(id: number): Observable<void> {
-    return this.ApiService.delete(id).pipe(
+    return this.UserApiService.delete(id).pipe(
       map(() => {
         console.log('User deleted successfully');
       }),
