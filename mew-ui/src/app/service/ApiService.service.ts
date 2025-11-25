@@ -16,7 +16,7 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   get(): Observable<User[]> {
-    return this.http.get<User[]>('http://localhost:8080/GamerMatch/users')
+    return this.http.get<User[]>('/GamerMatch/users')
     .pipe(
       map(response => {
         return [...response];
@@ -26,7 +26,7 @@ export class ApiService {
   }
 
   post(request: AddUserRequest): Observable<User> {
-    return this.http.post<User>('http://localhost:8080/GamerMatch/users', request)
+    return this.http.post<User>('/GamerMatch/users', request)
     .pipe(
       map(response => {
         console.log('User added successfully:', response);
@@ -36,7 +36,7 @@ export class ApiService {
   }
 
   put(userId: number, request: UpdateUserRequest): Observable<User> {
-    return this.http.put<User>(`http://localhost:8080/GamerMatch/users/id/${userId}`, request)
+    return this.http.put<User>(`/GamerMatch/users/id/${userId}`, request)
     .pipe(
       map(response => {
         console.log('User updated successfully:', response);

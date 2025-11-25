@@ -76,7 +76,15 @@ export class UpdateUserFormComponent implements OnInit{
         console.log('User updated successfully:', response);
         this.successMessage.set('User updated successfully.');
         this.isSubmitting.set(false);
-        this.router.navigate(['/dashboard']);
+        this.updateUserForm.reset();
+
+        this.router.navigateByUrl('/').then(success => {
+          if (!success) {
+            window.location.href = '/';
+          }
+        }).catch(() => {
+          window.location.href = '/';
+        });
       },
       error: (error) => {
         console.error('Error updating user:', error);
