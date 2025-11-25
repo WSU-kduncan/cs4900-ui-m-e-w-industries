@@ -33,6 +33,7 @@ export class UpdateUserFormComponent implements OnInit{
 
   private createForm(): FormGroup {
     return this.fb.group({
+      id: [''],
       firstName: [''],
       lastName: [''],
       gamertag: [''],
