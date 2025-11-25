@@ -93,4 +93,16 @@ export class UserService {
       })
     );
   }
+
+  deleteUser(id: number): Observable<void> {
+    return this.ApiService.delete(id).pipe(
+      map(() => {
+        console.log('User deleted successfully');
+      }),
+      catchError(error => {
+        console.error('Error deleting user:', error);
+        throw error;
+      })
+    );
+  }
 }

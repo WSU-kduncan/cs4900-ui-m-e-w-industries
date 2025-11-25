@@ -17,6 +17,7 @@ import { UpdateUserFormComponent } from "../update-user-form-component/update-us
 export class DashboardComponent implements OnInit {
 
   private readonly userService = inject(UserService);
+  deleteUserId: number | null = null;
 
   userCards = signal<UserCard[]>([]);
   isLoading = signal<boolean>(true);
@@ -35,5 +36,17 @@ export class DashboardComponent implements OnInit {
 
   refreshDashboard(): void {
     this.loadDashboardData();
+  }
+
+  deleteUser(userId: number): void {
+    this.userService.deleteUser(userId).subscribe({
+      next: () => {
+        console.log(`User with ID ${userId} deleted successfully.`);
+        this.loadDashboardData();
+      },
+      error: (err) => {
+        console.error(`Error deleting user with ID ${userId}:`, err);
+      }
+    });
   }
 }

@@ -11,3 +11,13 @@
 </button>
 
 <app-update-user-form-component (userUpdated)="refreshDashboard()"></app-update-user-form-component>
+
+<label for="deleteUserId">User ID to Delete:</label>
+<input #deleteUserId id="deleteUserId" type="text" />
+<button
+    class="btn btn-info"
+    type="button"
+    (click)="deleteUser(+deleteUserId.value); deleteUserId.value='';"
+    aria-label="Delete user">
+    Delete User
+</button>

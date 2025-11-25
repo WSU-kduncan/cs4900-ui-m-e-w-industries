@@ -44,4 +44,13 @@ export class ApiService {
       })
     );
   }
+
+  delete(userId: number): Observable<void> {
+    return this.http.delete<void>(`/GamerMatch/users/id/${userId}`)
+    .pipe(
+      map(() => {
+        console.log('User deleted successfully');
+      })
+    );
+  }
 }
