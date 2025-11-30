@@ -1,0 +1,109 @@
+.user-form-card {
+  max-width: 520px;
+  margin: 0 auto 1.5rem;
+}
+
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 1rem;
+  margin-top: 0.75rem;
+}
+
+
+.field.full-width {
+  grid-column: 1 / -1;
+}
+
+
+.field {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+
+.field input,
+.field textarea {
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: #7cb342; /* soft green */
+  box-shadow: 0 0 0 1px rgba(124, 179, 66, 0.25);
+  background: #ffffff;
+}
+
+
+.error {
+  font-size: 0.78rem;
+  color: #b91c1c;
+}
+
+.error.global {
+  margin: 0;
+}
+
+
+.actions {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+
+.actions button {
+  padding: 0.45rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  background: #7cb342; /* green to match card vibe */
+  color: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  transition: background-color 0.15s ease, transform 0.05s ease, box-shadow 0.15s ease;
+}
+
+.actions button:hover:not(:disabled) {
+  background: #689f38;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+.actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
+}
+
+
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.title .name {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;     
+  text-align: center;  
+}
+
+

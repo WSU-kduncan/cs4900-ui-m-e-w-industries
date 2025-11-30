@@ -1,6 +1,5 @@
-import { Component, signal, Signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { toSignal } from '@angular/core/rxjs-interop';
 
 import { UserService, ApiUser } from '../user-service';
 import { UserDetail } from '../user-detail/user-detail';
@@ -13,15 +12,30 @@ import { UserDetail } from '../user-detail/user-detail';
   styleUrls: ['./user-table.scss'],
 })
 export class UserTable {
-
-  
-  remoteUsers!: Signal<ApiUser[]>;
+  // 👇 writable signal that holds the users
+  remoteUsers = signal<ApiUser[]>([]);
 
   constructor(public userService: UserService) {
-    // Convert Observable<ApiUser[]> → Signal<ApiUser[]>
-    this.remoteUsers = toSignal(this.userService.getRemoteUsers(), {
-      initialValue: [] as ApiUser[],
+    this.loadRemoteUsers(); // initial load
+  }
+
+  // 👇 single place to call the GET and update the signal
+  private loadRemoteUsers(): void {
+    this.userService.getRemoteUsers().subscribe({
+      next: (users: ApiUser[]) => {
+        console.log('Loaded users:', users);
+        this.remoteUsers.set(users);
+      },
+      error: (err: any) => {
+        console.error('Failed to load users', err);
+        this.remoteUsers.set([]);
+      },
     });
   }
 
+  // 👇 called from app.html: userTable.reload()
+  reload(): void {
+    console.log('reload() called');
+    this.loadRemoteUsers();
+  }
 }

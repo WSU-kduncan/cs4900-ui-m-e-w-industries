@@ -1,0 +1,67 @@
+<div class="card user-form-card">
+  <div class="card-head">
+    <div class="avatar">
+      
+    </div>
+    <div class="title">
+      <p class="name">Create New User</p>
+      <p class="muted">Fill out the details and submit to add a new user.</p>
+    </div>
+  </div>
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="form-grid">
+    <div class="field">
+      <label for="firstName">First Name</label>
+      <input id="firstName" type="text" formControlName="firstName" />
+      <div class="error" *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched">
+        First name is required.
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="lastName">Last Name</label>
+      <input id="lastName" type="text" formControlName="lastName" />
+      <div class="error" *ngIf="userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched">
+        Last name is required.
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="dob">Date of Birth</label>
+      <input id="dob" type="date" formControlName="dob" />
+    </div>
+
+    <div class="field">
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" />
+    </div>
+
+    <div class="field">
+      <label for="gamertag">Gamertag</label>
+      <input id="gamertag" type="text" formControlName="gamertag" />
+    </div>
+
+  <div class="field">
+  <label for="consoleId">Console</label>
+  <select id="consoleId" formControlName="consoleId">
+    <option value="" disabled>Select console</option>
+    <option *ngFor="let c of consoleOptions" [value]="c.id">
+      {{ c.label }}
+    </option>
+  </select>
+</div>
+
+    <div class="field full-width">
+      <label for="aboutUser">About User</label>
+      <textarea id="aboutUser" rows="3" formControlName="aboutUser"></textarea>
+    </div>
+
+    <div class="actions">
+      <button type="submit" [disabled]="userForm.invalid || isSubmitting">
+        {{ isSubmitting ? 'Creating…' : 'Create User' }}
+      </button>
+
+      <p class="error global" *ngIf="errorMessage">{{ errorMessage }}</p>
+    </div>
+  </form>
+</div>

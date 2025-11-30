@@ -11,7 +11,7 @@ import { ApiUser } from '../user-service';
 })
 export class UserDetail {
 
-  // Accepts API user now (NOT local User model)
+  
   item = input.required<ApiUser>();
 
   consoleLabel(id: number): string {

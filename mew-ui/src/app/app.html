@@ -1,6 +1,14 @@
 <main class="main">
-  <app-user-table></app-user-table>   
+  
+
+  <app-user-form (userCreated)="userTable.reload()"></app-user-form>
+
+  
+
+  <app-user-table #userTable></app-user-table>
+
+  <app-user-delete (userDeleted)="userTable.reload()"></app-user-delete>
+
 </main>
 
-     
-<router-outlet></router-outlet>  
+<router-outlet></router-outlet>

@@ -1,0 +1,29 @@
+<div class="card delete-user-card">
+  <div class="card-head">
+    <div class="avatar">
+      
+    </div>
+    <div class="title">
+      <p class="name">Delete User</p>
+      <p class="muted">Enter a user ID to remove that user.</p>
+    </div>
+  </div>
+
+  <form [formGroup]="deleteForm" (ngSubmit)="onSubmit()" class="delete-form">
+    <div class="field">
+      <label for="userId">User ID</label>
+      <input id="userId" type="number" formControlName="userId" />
+      <div class="error" *ngIf="deleteForm.get('userId')?.invalid && deleteForm.get('userId')?.touched">
+        A valid user ID is required.
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" [disabled]="deleteForm.invalid || isSubmitting">
+        {{ isSubmitting ? 'Deleting…' : 'Delete User' }}
+      </button>
+
+      <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+    </div>
+  </form>
+</div>

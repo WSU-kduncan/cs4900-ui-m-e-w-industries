@@ -1,11 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { UserTable } from './user-table/user-table';   
+import { UserTable } from './user-table/user-table';  
+import { UserForm } from './user-form/user-form'; 
+import { UserDelete } from './user-delete/user-delete';
 
 @Component({
   selector: 'app-root',
   standalone: true,                 
-  imports: [RouterOutlet, UserTable],   
+  imports: [RouterOutlet, UserTable, UserForm, UserDelete],   
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],          
 })
