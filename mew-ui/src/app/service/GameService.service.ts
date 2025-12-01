@@ -9,7 +9,7 @@ export interface Game {
   title: string;
   isSinglePlayer: boolean;
   isMultiPlayer: boolean;
-  genre: string;
+  genreId: number;
   userIds: number[];
 }
 

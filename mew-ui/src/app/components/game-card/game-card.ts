@@ -17,7 +17,7 @@ export class GameCard {
   title: string | undefined;
   isSinglePlayer: boolean | undefined;
   isMultiPlayer: boolean | undefined; 
-  genre: string | undefined;
+  genreId: number | undefined;
   userIds: number[] | undefined;
 
   @Input() game: Game | null = null;
