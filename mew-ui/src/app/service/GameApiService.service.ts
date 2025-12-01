@@ -18,4 +18,13 @@ export class GameApiService {
             })
         );
     }
+
+    getById(gameId: number): Observable<Game> {
+        return this.http.get<Game>(`/GamerMatch/games/id/${gameId}`)
+        .pipe(
+            map(response => {
+                return response;
+            })
+        );
+    }
 }

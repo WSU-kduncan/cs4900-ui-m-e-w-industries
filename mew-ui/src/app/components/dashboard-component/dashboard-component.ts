@@ -3,6 +3,8 @@ import { UserCard } from '../user-card/user-card';
 import { UserService } from '../../service/UserService.service';
 import { UserFormComponent } from "../user-form-component/user-form-component";
 import { UpdateUserFormComponent } from "../update-user-form-component/update-user-form-component";
+import { GameCard } from '../game-card/game-card';
+import { GameService } from '../../service/GameService.service';
 
 @Component({
   selector: 'app-dashboard-component',
@@ -17,8 +19,10 @@ import { UpdateUserFormComponent } from "../update-user-form-component/update-us
 export class DashboardComponent implements OnInit {
 
   private readonly userService = inject(UserService);
+  private readonly gameService = inject(GameService);
   deleteUserId: number | null = null;
 
+  gameCards = signal<GameCard[]>([]);
   userCards = signal<UserCard[]>([]);
   isLoading = signal<boolean>(true);
   readonly users = this.userService.UserCards;
@@ -32,6 +36,7 @@ export class DashboardComponent implements OnInit {
     this.isLoading.set(true);
 
     this.userService.getUsersFromBackend();
+    this.gameService.getGamesFromBackend();
   };
 
   refreshDashboard(): void {

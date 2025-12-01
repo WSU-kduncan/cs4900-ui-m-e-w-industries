@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { User } from '../../service/UserService.service';
-import { Game } from '../../service/GameService.service';
+import { Game, GameService } from '../../service/GameService.service';
 
 @Component({
   selector: 'app-game-card',
@@ -9,6 +9,9 @@ import { Game } from '../../service/GameService.service';
   styleUrl: './game-card.scss',
 })
 export class GameCard {
+
+  public gameService: GameService = inject(GameService);
+  public games = this.gameService.GameCards;
 
   id: number | undefined;
   title: string | undefined;
@@ -22,4 +25,6 @@ export class GameCard {
   public trackGameById(index: number, game: Game): number {
     return game.id;
   }
+
+
 }

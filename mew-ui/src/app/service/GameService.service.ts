@@ -37,4 +37,17 @@ export class GameService {
       }
     });
   }
+
+  getGameById(gameId: number): Observable<Game> {
+    return this.GameApiService.getById(gameId).pipe(
+      map((data: Game) => {
+        console.log(`Game data for ID ${gameId} retrieved from backend:`, data);
+        return data;
+      }),
+      catchError((error) => {
+        console.error(`Error fetching game data for ID ${gameId} from backend:`, error);
+        throw error;
+      })
+    );
+  } 
 }
