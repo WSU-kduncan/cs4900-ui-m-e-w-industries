@@ -4,14 +4,14 @@
 <h4>{{ user?.dob }}</h4>
 <h4>{{ user?.email }}</h4>
 <h4>{{ user?.gamertag }}</h4>
-<h4>{{ user?.consoleId }}</h4>
+<!-- <h4>{{ user?.consoleId }}</h4> -->
 <h4>{{ user?.aboutUser }}</h4>
-<!-- <h4>{{ user?.gameIds }}</h4> -->
 
-@for (game of gameCard.games(); track gameCard.trackGameById($index, game)) {
-    @if (user?.gameIds?.includes(game.id!)) {
-        <h4>{{ game.title }}</h4>>
+@for (game of games(); track gameService.trackGameById($index, game)) {
+    @if (user?.gameIds?.includes(game.gameId!)) {
+        <app-game-card [game]="game"></app-game-card>
     }
 } @empty {
     <h4>No games associated.</h4>
 }
+

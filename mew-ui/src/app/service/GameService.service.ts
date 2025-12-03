@@ -5,11 +5,11 @@ import { toSignal } from "@angular/core/rxjs-interop";
 import { GameApiService } from "./GameApiService.service";
 
 export interface Game {
-  id: number;
-  title: string;
-  isSinglePlayer: boolean;
-  isMultiPlayer: boolean;
-  genreId: number;
+  gameId: number;
+  gameTitle: string;
+  singlePlayer: boolean;
+  multiPlayer: boolean;
+  primaryGenreId: number;
   userIds: number[];
 }
 
@@ -25,6 +25,10 @@ export class GameService {
 
   private _gameFromBackend = signal<Game | null>(null);
   public readonly gameFromBackend = this._gameFromBackend.asReadonly();
+
+  public trackGameById(index: number, game: Game): number {
+    return game.gameId;
+  }
 
   getGamesFromBackend(): void {
     this.GameApiService.get().subscribe({

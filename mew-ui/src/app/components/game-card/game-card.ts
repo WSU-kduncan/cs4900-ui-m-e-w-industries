@@ -1,5 +1,4 @@
 import { Component, inject, Input } from '@angular/core';
-import { User } from '../../service/UserService.service';
 import { Game, GameService } from '../../service/GameService.service';
 
 @Component({
@@ -21,10 +20,5 @@ export class GameCard {
   userIds: number[] | undefined;
 
   @Input() game: Game | null = null;
-
-  public trackGameById(index: number, game: Game): number {
-    return game.id;
-  }
-
 
 }
