@@ -1,5 +1,5 @@
 .matches-container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 2rem auto;
   padding: 2rem;
   background-color: #f5f5dc;
@@ -14,6 +14,55 @@
   color: #333;
   margin-bottom: 1.5rem;
   letter-spacing: 2px;
+}
+
+/* Action Bar */
+.action-bar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-create {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-create:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
+.btn-refresh {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.btn-refresh:hover:not(:disabled) {
+  background-color: #138496;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(23, 162, 184, 0.3);
+}
+
+.btn-refresh:disabled {
+  background-color: #7ec8d3;
+  cursor: not-allowed;
+  transform: none;
 }
 
 /* API Users Section */
@@ -105,71 +154,16 @@
   margin: 2rem 0;
 }
 
-/* Form Section */
-.add-match-form {
-  background-color: #e8dff5;
+/* Matches Section */
+.matches-section {
+  background-color: #fff3e0;
   padding: 1.5rem;
   border-radius: 8px;
-  margin-bottom: 2rem;
-  border: 2px solid #c4b5d8;
+  border: 2px solid #ffb74d;
 }
 
-.form-title {
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-group label {
-  display: block;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #444;
-  margin-bottom: 0.4rem;
-}
-
-.form-input {
-  width: 100%;
-  padding: 0.75rem;
-  font-size: 1rem;
-  border: 2px solid #c4b5d8;
-  border-radius: 6px;
-  background-color: white;
-  transition: border-color 0.3s ease;
-  box-sizing: border-box;
-}
-
-.form-input:focus {
-  outline: none;
-  border-color: #9b88ab;
-}
-
-.add-button {
-  width: 100%;
-  padding: 0.9rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: white;
-  background-color: #9b88ab;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 0.5rem;
-}
-
-.add-button:hover:not(:disabled) {
-  background-color: #8a76a0;
-}
-
-.add-button:disabled {
-  background-color: #d0c4dd;
-  cursor: not-allowed;
+.matches-section .section-title {
+  color: #e65100;
 }
 
 .matches-info {
@@ -182,7 +176,67 @@
 .matches-list {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 1rem;
+}
+
+.match-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: white;
+  border-radius: 8px;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.match-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.match-content {
+  flex: 1;
+}
+
+.match-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.btn-action {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.btn-edit {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.btn-edit:hover {
+  background-color: #ffb300;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
 }
 
 .no-matches {
@@ -202,11 +256,30 @@
     font-size: 2rem;
   }
   
-  .match-item {
-    padding: 1rem;
+  .section-title {
+    font-size: 1.5rem;
   }
   
-  .match-name {
-    font-size: 1.1rem;
+  .match-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .match-actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+  
+  .btn-action {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .action-bar {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
   }
 }

@@ -3,18 +3,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem;
-  margin-bottom: 1rem;
   background-color: #b8a6c9;
   border: 2px solid #9b88ab;
   border-radius: 8px;
   transition: all 0.3s ease;
-  cursor: pointer;
-  position: relative;
 }
 
 .match-detail-card:hover {
   background-color: #a995ba;
-  transform: translateX(5px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -50,13 +46,6 @@
   line-height: 1.4;
 }
 
-.match-arrow {
-  font-size: 2rem;
-  color: #4a4a4a;
-  font-weight: bold;
-  margin-left: 1rem;
-}
-
 @media (max-width: 600px) {
   .match-detail-card {
     padding: 1rem;
@@ -70,10 +59,5 @@
   
   .match-about {
     padding: 0.5rem 0;
-  }
-  
-  .match-arrow {
-    align-self: flex-end;
-    margin-top: 0.5rem;
   }
 }

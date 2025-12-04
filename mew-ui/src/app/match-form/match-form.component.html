@@ -1,0 +1,94 @@
+<div class="form-container">
+  <div class="form-card">
+    <h2 class="form-header">
+      {{ isEditMode() ? 'Edit Match' : 'Create New Match' }}
+    </h2>
+
+    @if (errorMessage()) {
+      <div class="error-banner">
+        {{ errorMessage() }}
+      </div>
+    }
+
+    <form [formGroup]="matchForm" (ngSubmit)="onSubmit()" class="match-form">
+      <!-- Name Field -->
+      <div class="form-group">
+        <label for="name" class="form-label">
+          Name <span class="required">*</span>
+        </label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          class="form-input"
+          [class.error]="hasError('name', 'required') || hasError('name', 'minlength')"
+          placeholder="Enter name"
+        />
+        @if (hasError('name', 'required') || hasError('name', 'minlength')) {
+          <span class="error-message">{{ getErrorMessage('name') }}</span>
+        }
+      </div>
+
+      <!-- Gamertag Field -->
+      <div class="form-group">
+        <label for="gamertag" class="form-label">
+          Gamertag <span class="required">*</span>
+        </label>
+        <input
+          type="text"
+          id="gamertag"
+          formControlName="gamertag"
+          class="form-input"
+          [class.error]="hasError('gamertag', 'required') || hasError('gamertag', 'minlength')"
+          placeholder="Enter gamertag"
+        />
+        @if (hasError('gamertag', 'required') || hasError('gamertag', 'minlength')) {
+          <span class="error-message">{{ getErrorMessage('gamertag') }}</span>
+        }
+      </div>
+
+      <!-- About User Field -->
+      <div class="form-group">
+        <label for="aboutUser" class="form-label">
+          About User
+        </label>
+        <textarea
+          id="aboutUser"
+          formControlName="aboutUser"
+          class="form-textarea"
+          placeholder="Tell us about yourself (optional)"
+          rows="4"
+        ></textarea>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="matchForm.invalid || isSubmitting()"
+        >
+          @if (isSubmitting()) {
+            <span>Submitting...</span>
+          } @else {
+            <span>{{ isEditMode() ? 'Update Match' : 'Create Match' }}</span>
+          }
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="onCancel()"
+          [disabled]="isSubmitting()"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+
+    <!-- Debug Info (remove in production) -->
+    <div class="debug-info">
+      <p><strong>Form Status:</strong> {{ matchForm.valid ? 'Valid ✓' : 'Invalid ✗' }}</p>
+      <p><strong>Mode:</strong> {{ isEditMode() ? 'Edit' : 'Create' }}</p>
+    </div>
+  </div>
+</div>

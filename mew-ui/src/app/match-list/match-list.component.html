@@ -1,9 +1,17 @@
 <div class="matches-container">
   <h1 class="matches-title">MATCHES</h1>
 
+  <!-- Action Buttons -->
+  <div class="action-bar">
+    <a routerLink="/create" class="btn btn-create">+ Create New Match</a>
+    <button (click)="refreshMatches()" class="btn btn-refresh" [disabled]="isLoading()">
+      {{ isLoading() ? 'Refreshing...' : '🔄 Refresh List' }}
+    </button>
+  </div>
+
   <!-- Display API Users Section -->
   <div class="api-users-section">
-    <h2 class="section-title">Users from API</h2>
+    <h2 class="section-title">Users from API (READ operation)</h2>
     @if (users().length > 0) {
       <p class="users-info">Fetched {{ users().length }} users from JSONPlaceholder API</p>
       
@@ -32,68 +40,45 @@
   </div>
 
   <hr class="section-divider" />
-  
-  <!-- Add New Match Form -->
-  <div class="add-match-form">
-    <h2 class="form-title">Add New Match</h2>
-    
-    <div class="form-group">
-      <label for="matchName">Name:</label>
-      <input 
-        type="text" 
-        id="matchName"
-        class="form-input"
-        [value]="newMatchName()"
-        (input)="onNameInput($event)"
-        placeholder="Enter name"
-      />
-    </div>
-    
-    <div class="form-group">
-      <label for="matchGamertag">Gamertag:</label>
-      <input 
-        type="text" 
-        id="matchGamertag"
-        class="form-input"
-        [value]="newMatchGamertag()"
-        (input)="onGamertagInput($event)"
-        placeholder="Enter gamertag"
-      />
-    </div>
-    
-    <div class="form-group">
-      <label for="matchAbout">About (optional):</label>
-      <input 
-        type="text" 
-        id="matchAbout"
-        class="form-input"
-        [value]="newMatchAbout()"
-        (input)="onAboutInput($event)"
-        placeholder="Tell us about yourself"
-      />
-    </div>
-    
-    <button 
-      class="add-button"
-      (click)="onAddMatch()"
-      [disabled]="!newMatchName() || !newMatchGamertag()"
-    >
-      Add Match
-    </button>
-  </div>
 
-  <!-- Display matches using @if and @for with child component -->
-  @if (matches().length > 0) {
-    <p class="matches-info">You have {{ matches().length }} match(es)!</p>
+  <!-- Display Matches with CRUD operations -->
+  <div class="matches-section">
+    <h2 class="section-title">Your Matches (CRUD Operations)</h2>
     
-    <div class="matches-list">
-      @for (match of matches(); track match.id) {
-        <app-match-detail [match]="match" />
+    @if (isLoading()) {
+      <p class="loading">Loading matches...</p>
+    } @else {
+      @if (matches().length > 0) {
+        <p class="matches-info">You have {{ matches().length }} match(es)!</p>
+        
+        <div class="matches-list">
+          @for (match of matches(); track match.id) {
+            <div class="match-item">
+              <div class="match-content">
+                <app-match-detail [match]="match" />
+              </div>
+              <div class="match-actions">
+                <a 
+                  [routerLink]="['/edit', match.id]" 
+                  class="btn-action btn-edit"
+                  title="Edit"
+                >
+                  ✏️ Edit
+                </a>
+                <button 
+                  (click)="onDeleteMatch(match.id, match.name)"
+                  class="btn-action btn-delete"
+                  title="Delete"
+                >
+                  🗑️ Delete
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      } @else {
+        <p class="no-matches">No matches yet. Create your first match using the button above!</p>
       }
-    </div>
-  }
-  
-  @if (matches().length === 0) {
-    <p class="no-matches">No matches yet. Add your first match above!</p>
-  }
+    }
+  </div>
 </div>
