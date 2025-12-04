@@ -1,0 +1,25 @@
+
+<form [formGroup]="updateUserForm" (ngSubmit)="onSubmit()" class="update-user-form">
+    <label for="id">User ID:</label>
+    <input id="id" formControlName="id" type="text" />
+    
+    <label for="firstName">First Name:</label>
+    <input id="firstName" formControlName="firstName" type="text" />
+
+    <label for="lastName">Last Name:</label>
+    <input id="lastName" formControlName="lastName" type="text" />
+
+    <label for="gamertag">Gamertag:</label>
+    <input id="gamertag" formControlName="gamertag" type="text" />
+
+    <label for="consoleId">Preferred Console:</label>
+    <input id="consoleId" formControlName="consoleId" type="text" />
+
+    <label for="aboutUser">About User:</label>
+    <input id="aboutUser" formControlName="aboutUser" type="text" />
+
+    <label for="gameIds">Game IDs (comma separated):</label>
+    <input id="gameIds" formControlName="gameIds" type="text" />
+
+    <button type="submit" [disabled]="isSubmitting()">Update User</button>
+</form>

@@ -1,0 +1,56 @@
+
+<ul>
+    @for (user of users(); track trackUserById($index, user)) {
+        <li>
+            <app-user-card-detail [user]="user"></app-user-card-detail>
+        </li>
+    } @empty {
+        <li>No users available.</li>
+    }
+</ul>
+
+<!-- <ul>
+    @for (user of ; track user.id) {
+        <li>
+            <app-user-card-detail [user]="user"></app-user-card-detail>
+        </li>
+    } @empty {
+        <li>No users available.</li>
+    }
+</ul> -->
+
+<!-- <input #idInput type="number" placeholder="User ID" [(ngModel)]="id">
+<input #firstNameInput type="text" placeholder="User First Name" [(ngModel)]="firstName">
+<input #lastNameInput type="text" placeholder="User Last Name" [(ngModel)]="lastName">
+<input #dobInput type="text" placeholder="Date of Birth" [(ngModel)]="dob">
+<input #emailInput type="text" placeholder="Email" [(ngModel)]="email">
+<input #gamertagInput type="text" placeholder="Gamertag" [(ngModel)]="gamertag">
+<input #preferredConsoleInput type="text" placeholder="Preferred Console" [(ngModel)]="preferredConsole"> -->
+
+<!-- <button (click)="onButtonClick(id || 0, firstName || '', lastName || '', dob || '', email || '', gamertag || '', preferredConsole || '')">Add User</button>
+
+@if (buttonClicked()) {
+    <p>User Added!</p>
+} @else {
+    <p>Add User</p>
+} -->
+
+<!-- @if (isTyping()) {
+    <p>Typing...</p>
+} @else {
+    <p>Not typing</p>
+} -->
+    
+<!-- @if (user) {
+    <div class="user-card">
+        <h3>{{ user.id }}</h3>
+        <h4>{{ user.firstName }}</h4>
+        <h4>{{ user.lastName }}</h4>
+        <h4>{{ user.dob }}</h4>
+        <h4>{{ user.email }}</h4>
+        <h4>{{ user.gamertag }}</h4>
+        <h4>{{ user.preferredConsole }}</h4>
+    </div>
+} @else {
+    <p>No user data available.</p>
+} -->
