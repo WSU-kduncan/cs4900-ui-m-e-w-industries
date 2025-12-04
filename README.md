@@ -1,5 +1,3 @@
-# UI REPO FOR MEW Industries
-# UI REPO FOR MEW Industries
 # GamerMatch UI – Angular Frontend
 
 This repository contains the **Angular frontend** for the GamerMatch application.  
