@@ -1,14 +1,16 @@
+
+<body>
 <app-user-card></app-user-card>
 
 <app-user-form-component (userAdded)="refreshDashboard()"></app-user-form-component>
 
-<button
+<!-- <button
     class="btn btn-info"
     type="button"
     (click)="refreshDashboard()"
     aria-label="Refresh user list">
     Refresh
-</button>
+</button> -->
 
 <app-update-user-form-component (userUpdated)="refreshDashboard()"></app-update-user-form-component>
 
@@ -21,3 +23,4 @@
     aria-label="Delete user">
     Delete User
 </button>
+</body>
