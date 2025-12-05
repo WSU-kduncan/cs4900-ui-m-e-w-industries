@@ -63,8 +63,40 @@ Follow the commands in the API README to:
 Start the UI with:
 
 ```bash
-ng serve
+ng serve --proxy-config proxy.conf.json
 ```
 ## Step 4: Open the application in your browser at:
 
 http://localhost:4200/
+
+## User Dashboard
+
+This is the main page of the app, it displays all the users in the database in a list.
+If you scroll to the bottom, you will find three forms:
+
+### Add User
+
+- Fill in all fields and click "Add User" button to add user to database
+
+![AddUser](./images/addUserForm.png)
+
+- Page will refresh and added user will appear at bottom of list
+
+![AddedUser](./images/addedUser.png)
+
+### Update User
+
+- Fill in all fields and click "Update User" button to update user information
+
+![UpdateUser](./images/updateUserForm.png)
+
+- Page will refresh and user information will be updated
+
+![UpdatedUser](./images/updatedUser.png)
+
+### Delete User
+
+- Fill in user Id number and press delete button
+- User profile will be deleted and page will refresh
+
+![DeleteUser](./images/deleteUserForm.png)
