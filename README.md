@@ -78,7 +78,7 @@ If you scroll to the bottom, you will find three forms:
 
 - Fill in all fields and click "Add User" button to add user to database
 
-![AddUser](./images/addUserForm.png)
+![AddUser](./mew-ui/images/addUserForm.png)
 
 - Page will refresh and added user will appear at bottom of list
 
