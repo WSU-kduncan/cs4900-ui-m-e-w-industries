@@ -82,21 +82,21 @@ If you scroll to the bottom, you will find three forms:
 
 - Page will refresh and added user will appear at bottom of list
 
-![AddedUser](./images/addedUser.png)
+![AddedUser](./mew-ui/images/addedUser.png)
 
 ### Update User
 
 - Fill in all fields and click "Update User" button to update user information
 
-![UpdateUser](./images/updateUserForm.png)
+![UpdateUser](./mew-ui/images/updateUserForm.png)
 
 - Page will refresh and user information will be updated
 
-![UpdatedUser](./images/updatedUser.png)
+![UpdatedUser](./mew-ui/images/updatedUser.png)
 
 ### Delete User
 
 - Fill in user Id number and press delete button
 - User profile will be deleted and page will refresh
 
-![DeleteUser](./images/deleteUserForm.png)
+![DeleteUser](./mew-ui/images/deleteUserForm.png)
